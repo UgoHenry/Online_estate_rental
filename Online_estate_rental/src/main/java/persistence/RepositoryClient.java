@@ -16,4 +16,9 @@ public class RepositoryClient {
     public List<Client> listAllClientWithRequest(){
         return null;
     }
+
+    public List<Client> listClientOnlineFilterByRoleId(int roleId){
+        String sql = "SELECT c.name, c.phoneNumber FROM Client c ORDER BY roleId";
+        return em.createQuery(sql).getResultList();
+    }
 }

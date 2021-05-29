@@ -9,6 +9,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private int roleId;
+    @ManyToOne
+    @JoinColumn(name = "online_portal_id")
+    private OnlinePortal onlinePortal;
 
     public int getRoleId() {
         return roleId;

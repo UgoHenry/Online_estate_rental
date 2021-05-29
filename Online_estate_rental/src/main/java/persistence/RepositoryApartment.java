@@ -1,6 +1,7 @@
 package persistence;
 
 import model.Apartment;
+import model.ApartmentCustomised;
 import util.DBUtil;
 
 import javax.persistence.EntityManager;
@@ -14,12 +15,16 @@ public class RepositoryApartment {
 
     }
 
-    public List<Apartment> listAvailableApartmentForRent(){
+    public List<ApartmentCustomised> listAvailableApartmentForRentWithNeighborhood(){
+        String sql = "SELECT new model.ApartmentCustomised(a.apartmentId," +
+                " a.apartmentDescription, a.neighborhood) FROM Apartment a";
 
-        return null;
+        return em.createQuery(sql).getResultList();
     }
 
-    public List<Apartment> listAvailableApartmentForSale(){
+    public List<ApartmentCustomised> listApartmentForSellWithNeighborhoodAndPrice(){
+        String sql = "SELECT new model.ApartmentCustomised(a.apartmentId," +
+                " a.apartmentDescription, a.neighborhood, a.apartmentPrice) FROM Apartment a";
         return null;
     }
 }
