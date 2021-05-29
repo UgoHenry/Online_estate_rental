@@ -17,4 +17,9 @@ public class RepositoryAgent {
 
         return null;
     }
+
+    public List<Agent> listAgentOnlineFilterByRoleId(){
+        String sql = "SELECT a.name, a.phoneNumber FROM Agent a ORDER BY roleId";
+        return em.createQuery(sql).getResultList();
+    }
 }

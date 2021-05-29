@@ -1,7 +1,7 @@
 package menu;
 
 import model.Agent;
-import model.Apartment;
+import model.ApartmentCustomised;
 import model.Client;
 import persistence.*;
 
@@ -31,14 +31,14 @@ public class SubMenu {
         System.out.println("Select the option menu: ");
         System.out.println("------------------------");
         System.out.println();
-        System.out.println("1: Enter an address");
-        System.out.println("2: Enter a neighborhood");
-        System.out.println("3: Enter a city");
-        System.out.println("4: Enter a postal code");
-        System.out.println("5: Upload paid advert");
-        System.out.println("6: List available apartment for rent");
+        System.out.println("1: List apartment for rent with neighbourhood");
+        System.out.println("2: List apartment for sell with neighborhood and price");
+        System.out.println("3: List client online filter by roleId");
+        System.out.println("4: List agent online filter by roleId");
+        System.out.println("5: List client search filter by portal Search");
+        System.out.println("6: List number of apartment with amenities");
         System.out.println("7: List available apartment for sale");
-        System.out.println("8: List available agent");
+        System.out.println("8: Update online portal");
         System.out.println("9: List all client with request");
 
       return input.nextInt();
@@ -50,29 +50,29 @@ public class SubMenu {
             userChoice = menuOption(input);
             switch (userChoice){
                 case 1:
-                    enterAnAddress();
+                    listApartmentForRentWithNeighbourhood();
                     break;
                 case 2:
-                    enterANeighborhood();
+                    listApartmentForSellWithNeighborhoodAndPrice();
                     break;
                 case 3:
-                    enterACity();
+                    listClientOnlineFilterByRoleId(input);
                     break;
                 case 4:
-                    enterAPostalCode();
+                    listAgentOnlineFilterByRoleId();
                     break;
 
                 case 5:
-                    uploadPaidAdvert();
+                    listClientFilterByPortalSearch();
                     break;
                 case 6:
-                    listAvailableApartmentForRent();
+                    listNumberOfApartmentWithAmenities();
                     break;
                 case 7:
                     listAvailableApartmentForSale();
                     break;
                 case 8:
-                    listAvailableAgent();
+                    updateOnlinePortal();
                     break;
                 case 9:
                     listAllClientWithRequest();
@@ -83,27 +83,57 @@ public class SubMenu {
 
     }
 
-    public void enterAnAddress(){
+    public void listApartmentForRentWithNeighbourhood(){
+        List<ApartmentCustomised> listAptCustom = repositoryApartment.listAvailableApartmentForRentWithNeighborhood();
+        System.out.println(" List apartment for rent by neighborhood");
+        for (ApartmentCustomised apt:listAptCustom
+             ) {
+            System.out.println("Apartment: "+apt.getApartmentId()+" "+apt.getApartmentDescription()+" "+apt.getNeighborhood());
+
+        }
 
     }
 
-    public void enterANeighborhood(){
+    public void listApartmentForSellWithNeighborhoodAndPrice(){
+        List<ApartmentCustomised> listAptCustom = repositoryApartment.listApartmentForSellWithNeighborhoodAndPrice();
+        System.out.println(" List apartment for sale by neighborhood and price");
+        for (ApartmentCustomised apt:listAptCustom
+        ) {
+            System.out.println("Apartment: "+apt.getApartmentId()+" "
+                    +apt.getApartmentDescription()+" "+apt.getNeighborhood()+" "+apt.getApartmentPrice());
+
+        }
 
     }
 
-    public void enterACity(){
+    public void listClientOnlineFilterByRoleId(Scanner input){
+        System.out.println("Enter RoleId");
+        int roleId = input.nextInt();
+        List<Client> listClient = repositoryClient.listClientOnlineFilterByRoleId(roleId);
+        System.out.println("List of client online using role Id");
+        for (Client clt:listClient
+             ) {
+            System.out.println("Client: "+clt.getName()+" "+clt.getPhoneNumber()+" "+clt.getRole());
+
+        }
 
     }
 
-    public void enterAPostalCode(){
+    public void listAgentOnlineFilterByRoleId(){
+        List<Agent> listAgent = repositoryAgent.listAgentOnlineFilterByRoleId();
+        System.out.println("List of client online using role Id");
+        for (Agent agt:listAgent) {
+            System.out.println("Client: "+agt.getFirstName()+" "+agt.getPhoneNumber()+" "+agt.getRole());
+
+        }
 
     }
 
-    public void uploadPaidAdvert(){
+    public void listClientFilterByPortalSearch(){
 
     }
 
-    public void listAvailableApartmentForRent(){
+    public void listNumberOfApartmentWithAmenities(){
 
     }
 
@@ -111,7 +141,7 @@ public class SubMenu {
 
     }
 
-    public void listAvailableAgent(){
+    public void updateOnlinePortal(){
 
 
     }

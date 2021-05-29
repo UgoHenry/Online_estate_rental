@@ -15,6 +15,9 @@ public class Agent {
     private String lastName;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "role_id ")
+    private Role role;
 
     public int getAgentId() {
         return agentId;
@@ -48,6 +51,14 @@ public class Agent {
         this.phoneNumber = phoneNumber;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "Agent{" +
@@ -55,6 +66,7 @@ public class Agent {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

@@ -15,6 +15,10 @@ public class Client {
     private String phoneNumber;
     @Column(name = "client_request")
     private String clientRequest;
+    @ManyToOne
+    @JoinColumn(name = "role_id ")
+    private Role role;
+
 
     public int getClientId() {
         return clientId;
@@ -48,6 +52,14 @@ public class Client {
         this.clientRequest = clientRequest;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
@@ -55,6 +67,7 @@ public class Client {
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", clientRequest='" + clientRequest + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

@@ -17,6 +17,16 @@ public class Apartment {
     private String apartmentForRent;
     @Column(name = "apartment_for_sale")
     private String apartmentForSale;
+    @Column(name = "apartment_price")
+    private String apartmentPrice;
+    @Column(name = "apartment_Quantity")
+    private String apartmentQuantity;
+    @ManyToOne
+    @JoinColumn(name = "online_portal_id")
+    private OnlinePortal onlinePortal;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     public int getApartmentId() {
         return apartmentId;
@@ -58,6 +68,38 @@ public class Apartment {
         this.apartmentForSale = apartmentForSale;
     }
 
+    public String getApartmentPrice() {
+        return apartmentPrice;
+    }
+
+    public void setApartmentPrice(String apartmentPrice) {
+        this.apartmentPrice = apartmentPrice;
+    }
+
+    public String getApartmentQuantity() {
+        return apartmentQuantity;
+    }
+
+    public void setApartmentQuantity(String apartmentQuantity) {
+        this.apartmentQuantity = apartmentQuantity;
+    }
+
+    public OnlinePortal getOnlinePortal() {
+        return onlinePortal;
+    }
+
+    public void setOnlinePortal(OnlinePortal onlinePortal) {
+        this.onlinePortal = onlinePortal;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Apartment{" +
@@ -66,6 +108,10 @@ public class Apartment {
                 ", apartmentAmenities='" + apartmentAmenities + '\'' +
                 ", apartmentForRent='" + apartmentForRent + '\'' +
                 ", apartmentForSale='" + apartmentForSale + '\'' +
+                ", apartmentPrice='" + apartmentPrice + '\'' +
+                ", apartmentQuantity='" + apartmentQuantity + '\'' +
+                ", onlinePortal=" + onlinePortal +
+                ", address=" + address +
                 '}';
     }
 }
