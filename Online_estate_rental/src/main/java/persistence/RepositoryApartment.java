@@ -14,12 +14,12 @@ public class RepositoryApartment {
 
     }
 
-    public List<Apartment> ListAvailableApartmentForRent(){
+    public List<Apartment> listAvailableApartmentForRent(){
 
         return null;
     }
 
-    public List<Apartment> ListAvailableApartmentForSale(){
+    public List<Apartment> listAvailableApartmentForSale(){
         return null;
     }
 }

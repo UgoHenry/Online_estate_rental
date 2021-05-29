@@ -11,19 +11,19 @@ public class RepositoryAddress {
         em = DBUtil.getEntityManager();
     }
 
-    public void EnterAnAddress(){
+    public void enterAnAddress(){
 
     }
 
-    public void EnterANeighborhood(){
+    public void enterANeighborhood(){
 
     }
 
-    public void EnterACity(){
+    public void enterACity(){
 
     }
 
-    public void EnterAPostalCode(){
+    public void enterAPostalCode(){
 
     }
 

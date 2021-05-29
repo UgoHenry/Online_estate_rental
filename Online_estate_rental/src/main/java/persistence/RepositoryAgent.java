@@ -13,7 +13,7 @@ public class RepositoryAgent {
         em = DBUtil.getEntityManager();
     }
 
-    public List<Agent> ListAvailableAgent(){
+    public List<Agent> listAvailableAgent(){
 
         return null;
     }

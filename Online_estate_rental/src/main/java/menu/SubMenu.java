@@ -3,11 +3,28 @@ package menu;
 import model.Agent;
 import model.Apartment;
 import model.Client;
+import persistence.*;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class SubMenu {
+
+    private RepositoryRole repositoryRole;
+    private RepositoryAddress repositoryAddress;
+    private RepositoryAgent repositoryAgent;
+    private RepositoryApartment repositoryApartment;
+    private RepositoryOnlinePortal repositoryOnlinePortal;
+    private RepositoryClient repositoryClient;
+
+    public SubMenu() {
+        this.repositoryRole = new RepositoryRole();
+        this.repositoryAddress = new RepositoryAddress();
+        this.repositoryAgent = new RepositoryAgent();
+        this.repositoryClient = new RepositoryClient();
+        this.repositoryApartment = new RepositoryApartment();
+        this.repositoryOnlinePortal = new RepositoryOnlinePortal();
+    }
 
     private int menuOption(Scanner input){
         System.out.println("\n/*****************/");
@@ -22,7 +39,7 @@ public class SubMenu {
         System.out.println("6: List available apartment for rent");
         System.out.println("7: List available apartment for sale");
         System.out.println("8: List available agent");
-        System.out.println("9: list all client with request");
+        System.out.println("9: List all client with request");
 
       return input.nextInt();
     }
@@ -33,29 +50,29 @@ public class SubMenu {
             userChoice = menuOption(input);
             switch (userChoice){
                 case 1:
-                    EnterAnAddress();
+                    enterAnAddress();
                     break;
                 case 2:
-                    EnterANeighborhood();
+                    enterANeighborhood();
                     break;
                 case 3:
-                    EnterACity();
+                    enterACity();
                     break;
                 case 4:
-                    EnterAPostalCode();
+                    enterAPostalCode();
                     break;
 
                 case 5:
-                    UploadPaidAdvert();
+                    uploadPaidAdvert();
                     break;
                 case 6:
-                    ListAvailableApartmentForRent();
+                    listAvailableApartmentForRent();
                     break;
                 case 7:
-                    ListAvailableApartmentForSale();
+                    listAvailableApartmentForSale();
                     break;
                 case 8:
-                    ListAvailableAgent();
+                    listAvailableAgent();
                     break;
                 case 9:
                     listAllClientWithRequest();
@@ -66,42 +83,41 @@ public class SubMenu {
 
     }
 
-    public void EnterAnAddress(){
+    public void enterAnAddress(){
 
     }
 
-    public void EnterANeighborhood(){
+    public void enterANeighborhood(){
 
     }
 
-    public void EnterACity(){
+    public void enterACity(){
 
     }
 
-    public void EnterAPostalCode(){
+    public void enterAPostalCode(){
 
     }
 
-    public void UploadPaidAdvert(){
+    public void uploadPaidAdvert(){
 
     }
 
-    public List<Apartment> ListAvailableApartmentForRent(){
+    public void listAvailableApartmentForRent(){
 
-        return null;
     }
 
-    public List<Apartment> ListAvailableApartmentForSale(){
-        return null;
+    public void listAvailableApartmentForSale(){
+
     }
 
-    public List<Agent> ListAvailableAgent(){
+    public void listAvailableAgent(){
 
-        return null;
+
     }
 
-    public List<Client> listAllClientWithRequest(){
-        return null;
+    public void listAllClientWithRequest(){
+
     }
 
 }
