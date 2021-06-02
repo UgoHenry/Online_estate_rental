@@ -1,8 +1,6 @@
 package menu;
 
-import model.Agent;
-import model.ApartmentCustomised;
-import model.Client;
+import model.*;
 import persistence.*;
 
 import java.util.List;
@@ -72,7 +70,7 @@ public class SubMenu {
                     listAvailableApartmentForSale();
                     break;
                 case 8:
-                    updateOnlinePortal();
+                    updateOnlinePortal(input);
                     break;
                 case 9:
                     listAllClientWithRequest();
@@ -130,23 +128,55 @@ public class SubMenu {
     }
 
     public void listClientFilterByPortalSearch(){
+        List<ClientCustomised> listCltCustom = repositoryClient.listClientFilterByPortalSearch();
+        System.out.println(" List client by portal search");
+        for (ClientCustomised clt:listCltCustom
+             ) {
+            System.out.println("Client: "+clt.getClientId()+" "+clt.getName()+
+                    " "+clt.getPhoneNumber()+" "+clt.getOnlinePortalId()+" "+clt.getEnterSearch());
+
+        }
 
     }
 
     public void listNumberOfApartmentWithAmenities(){
+        List<Object[]> listObj = repositoryApartment.listNumberOfApartmentWithAmenities();
+        for (Object[] obj:listObj
+             ) {
+            System.out.println("Apartment: "+ obj[0]+" "+ obj[1]);
+
+        }
 
     }
 
     public void listAvailableApartmentForSale(){
+        System.out.println("Apartment for sale");
+        List<Apartment> listApt = repositoryApartment.listAvailableApartmentForSale();
+        for (Apartment apt:listApt
+             ) {
+            System.out.println("Apartment: "+apt.getApartmentId()+" "+apt.getApartmentDescription()+
+                    " "+apt.getApartmentPrice()+" "+apt.getApartmentForSale());
+
+        }
 
     }
 
-    public void updateOnlinePortal(){
-
-
+    public void updateOnlinePortal(Scanner input){
+        System.out.println("Type OnlinePortal Id");
+        int id = input.nextInt();
+        System.out.println("Type new advert info");
+        String advert = input.nextLine();
+        repositoryOnlinePortal.updateOnlinePortal(id, advert);
     }
 
     public void listAllClientWithRequest(){
+        System.out.println("Client request");
+        List<Client> listCR = repositoryClient.listAllClientWithRequest();
+        for (Client clr:listCR
+             ) {
+            System.out.println("Client request: "+clr.getClientId()+" "+clr.getName()+
+                    " "+clr.getPhoneNumber()+" "+clr.getClientRequest());
+        }
 
     }
 

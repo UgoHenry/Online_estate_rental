@@ -27,4 +27,17 @@ public class RepositoryApartment {
                 " a.apartmentDescription, a.neighborhood, a.apartmentPrice) FROM Apartment a";
         return null;
     }
+
+    public List<Object[]> listNumberOfApartmentWithAmenities(){
+        String sql = "SELECT count(a.apartmentAmenities), a.apartmentAmenities " +
+                "FROM Apartment a GROUP BY a.apartmentAmenities";
+        return em.createQuery(sql).getResultList();
+    }
+
+    public List<Apartment> listAvailableApartmentForSale(){
+        String sql = "SELECT a.apartmentId, a.apartmentDescription, a.apartmentPrice," +
+                " a.apartmentForSale FROM Apartment a ORDER BY a.apartmentForSale";
+        return em.createQuery(sql).getResultList();
+
+    }
 }
