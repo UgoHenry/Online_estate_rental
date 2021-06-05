@@ -25,7 +25,7 @@ public class RepositoryApartment {
     public List<ApartmentCustomised> listApartmentForSellWithNeighborhoodAndPrice(){
         String sql = "SELECT new model.ApartmentCustomised(a.apartmentId," +
                 " a.apartmentDescription, a.neighborhood, a.apartmentPrice) FROM Apartment a";
-        return null;
+        return em.createQuery(sql).getResultList();
     }
 
     public List<Object[]> listNumberOfApartmentWithAmenities(){
