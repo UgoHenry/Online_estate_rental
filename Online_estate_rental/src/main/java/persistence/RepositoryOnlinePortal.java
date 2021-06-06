@@ -11,7 +11,16 @@ public class RepositoryOnlinePortal {
         em = DBUtil.getEntityManager();
     }
 
-    public void UploadPaidAdvert(){
+    public void updateOnlinePortal(int onlinePortalId, String uploadAdvert){
+        em.getTransaction().begin();
+        int result = em.createQuery("UPDATE OnlinePortal o SET o.uploadPaidAdvert = " +
+                ":newValue WHERE o.onlinePortalId = :id")
+                .setParameter("newValue", uploadAdvert)
+                .setParameter("id", onlinePortalId).executeUpdate();
+        if (result > 0){
+            System.out.println("\nAdvert updated successfully");
+        }
+        em.getTransaction().commit();
 
     }
 }
